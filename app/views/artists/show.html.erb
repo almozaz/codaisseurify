@@ -8,6 +8,23 @@
 
     <br>
     <h4>Songs</h4>
+    <% if @artist.songs.any? %>
+      <ul>
+      <% @artist.songs.each do |song| %>
+        <li><%= song.name %></li>
+      <% end %>
+      </ul>
+      <% else %>
+        <p>This artist has no songs yet. Why don't you add some?</p>
+      <% end %>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">Add new song</div>
+
+          <div class="panel-body">
+            <%= render 'songs/form' %>
+          </div>
+        </div>
 
   </div>
 </div>

@@ -1,0 +1,9 @@
+<%= form_for [@artist, @artist.songs.new] do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Song name", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

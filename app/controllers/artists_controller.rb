@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @songs = @artist.songs.all
   end
 
   def new
@@ -40,10 +41,6 @@ class ArtistsController < ApplicationController
   end
 
   private
-
-  # def set_room
-  #   @artist = Artist.find(params[:id])
-  # end
 
   def artist_params
     params
