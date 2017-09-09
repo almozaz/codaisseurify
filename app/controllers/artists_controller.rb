@@ -8,11 +8,11 @@ class ArtistsController < ApplicationController
   end
 
   def new
-    @artist = artist.build
+    @artist = Artist.new
   end
 
   def create
-    @artist = artist.build(artist_params)
+    @artist = Artist.new(artist_params)
 
     if @artist.save
       redirect_to @artist, notice: "Artist created"
@@ -29,6 +29,14 @@ class ArtistsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @artist = Artist.find(params[:id])
+
+    @artist.destroy
+
+    redirect_to artists_path
   end
 
   private
