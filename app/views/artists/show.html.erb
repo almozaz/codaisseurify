@@ -11,7 +11,7 @@
     <% if @artist.songs.any? %>
       <ul>
       <% @artist.songs.each do |song| %>
-        <li><%= song.name %></li>
+        <li><%= song.name %><%= link_to " [x]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
       <% end %>
       </ul>
       <% else %>

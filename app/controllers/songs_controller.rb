@@ -5,12 +5,15 @@ class SongsController < ApplicationController
   def new; end
 
   def create
-    @song = Song.new(song_params.merge(artist_id: params[:artist_id]))
-    @song.save
+    @song = Song.create(song_params.merge(artist_id: params[:artist_id]))
     redirect_to @song.artist, notice: "Song added"
   end
 
-  def; end
+  def destroy
+    @song = Song.find(params[:id])
+    @song.destroy
+    redirect_to request.referrer
+  end
 
   private
 
