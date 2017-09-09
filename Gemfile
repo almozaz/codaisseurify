@@ -38,6 +38,7 @@ gem 'jquery-rails', '~> 4.3.1'
 
 group :test do
   gem 'capybara', '~> 2.9', '>= 2.9.1'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development, :test do
@@ -45,7 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '4.7.0'
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+  gem 'faker', '1.8.4'
 end
 
 group :development do
