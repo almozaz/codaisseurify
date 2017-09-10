@@ -14,7 +14,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.build(artist_params)
+    @artist = Artist.new(artist_params)
 
     if @artist.save
       image_params.each do |image|
@@ -28,10 +28,13 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    @photos = @room.photos
+    @artist = Artist.find(params[:id])
+    @photos = @artist.photos
   end
 
   def update
+    @artist = Artist.find(params[:id])
+    @photos = @artist.photos
     if @artist.update(artist_params)
       image_params.each do |image|
         @artist.photos.create(image: image)

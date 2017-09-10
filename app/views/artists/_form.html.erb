@@ -1,4 +1,4 @@
-<%= form_for @artist do |f| %>
+<%= form_for @artist, html: { multipart: true } do |f| %>
   <div class="form-group">
     <label>Artist</label>
     <%= f.text_field :name, placeholder: "Artist name", class: "form-control" %>
@@ -9,7 +9,19 @@
     <%= f.text_area :description, rows: 5, placeholder: "Say something about this artist", class: "form-control" %>
   </div>
 
-  <label>Publish this artist?</label>
+  <label>Photos</label>
+
+  <div class="form-group">
+    <span class="btn btn-default">
+      Upload Photos
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+      <div id="photos">
+        <%= render 'photos/list' %>
+      </div>
+    </span>
+  </div>
+
+  <label>Save your changes</label>
 
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary" %>

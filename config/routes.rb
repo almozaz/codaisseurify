@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :artists do
     resources :songs, except: [:edit, :update, :show]
   end
+  resources :photos, only: [:destroy]
 end
