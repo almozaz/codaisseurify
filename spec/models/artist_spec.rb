@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Artist, type: :model do
-  artist = Artist.create!( name: Faker::Lovecraft.deity , description: Faker::Lovecraft.fhtagn(3) )
-
   describe "validations" do
+    artist = Artist.create!( name: Faker::Lovecraft.deity , description: Faker::Lovecraft.fhtagn(3) )
+
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
   end
 
   describe "association with songs" do
+    artist = Artist.create!( name: Faker::Lovecraft.deity , description: Faker::Lovecraft.fhtagn(3) )
+
     song1 = Song.create!(name: Faker::Lovecraft.tome, artist: artist )
     song2 = Song.create!(name: Faker::Lovecraft.tome, artist: artist )
 

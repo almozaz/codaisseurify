@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :song do
-    name { Faker::Lovecraft.tome }
+    name { Faker::Cat.breed }
   end
 end
