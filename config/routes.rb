@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :photos, only: [:destroy]
   namespace :api do
-    namespace :artists do
+    resources :artists, only: [:index] do
       resources :songs, only: [:create, :destroy]
     end
   end
