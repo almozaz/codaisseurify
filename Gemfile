@@ -40,8 +40,8 @@ gem 'cloudinary', '1.2.3'
 gem 'rails_12factor', group: :production
 
 group :test do
-  gem 'capybara', '~> 2.9', '>= 2.9.1'
   gem 'shoulda-matchers', '~> 3.1'
+    gem 'database_cleaner'
 end
 
 group :development, :test do
@@ -50,6 +50,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '4.7.0'
   gem 'faker', '1.8.4'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 
 group :development do

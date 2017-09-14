@@ -19,7 +19,7 @@ RSpec.describe Artist, type: :model do
       expect(artist.songs).to include(song2)
     end
 
-    it "deletes associated events" do
+    it "deletes associated songs" do
     expect { artist.destroy }.to change(artist.songs, :count).by(-2)
     end
   end
