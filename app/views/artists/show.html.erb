@@ -13,14 +13,12 @@
     <br>
     <h4>Songs</h4>
     <% if @artist.songs.any? %>
-      <ul id="songlist">
-      <% @artist.songs.each do |song| %>
-        <li><%= song.name %><%= link_to " [x]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
-      <% end %>
-      </ul>
+      <table class="table table-striped" id="todoList">
+        <%= render @songs %>
+      </table>
       <% else %>
         <p>This artist has no songs yet. Why don't you add some?</p>
-      <% end %>
+    <% end %>
 
         <div class="panel panel-primary">
           <div class="panel-heading">Add new song</div>

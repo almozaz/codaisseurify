@@ -1,7 +1,6 @@
 class SongsController < ApplicationController
   def create
     @song = Song.create(song_params.merge(artist_id: params[:artist_id]))
-    #redirect_to @song.artist, notice: "Song added"
     if @song.save
       redirect_to @song.artist, notice: "Song added"
     else
