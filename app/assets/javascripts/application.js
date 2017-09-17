@@ -24,17 +24,14 @@ function createSong(title) {
   .done(function(data) {
   console.log(data)
   var deleteId = "song-" + data.song.id;
-  debugger;
   var listItem = $("<li></li>");
   listItem.addClass("song");
   listItem.attr('song-id', data.song.id);
-  debugger;
   var deleteLink= $('<a></a>');
   deleteLink.attr('href', '#');
   deleteLink.attr('id', deleteId);
   deleteLink.attr('class', "delete-song");
   deleteLink.bind('click', deleteSong);
-  debugger;
   var deleteIcon = $('<span></span>')
   deleteIcon.attr('class', "glyphicon glyphicon-remove");
 
@@ -53,7 +50,6 @@ function createSong(title) {
   })
   .fail(function(error) {
     console.log(error);
-    debugger;
     // error_message = error.responseJSON.title[0];
     // showError(error_message);
   })
@@ -94,11 +90,13 @@ function deleteSong(event) {
   });
 }
 
+function deleteAllSongs(event) {
+  event.preventDefault();
+  $(".delete-song").trigger( "click" );
+}
+
 $(document).ready(function() {
-  // change this into a delete song acction
-  // $("deleteLink").bind('click', deleteSong);
   $("form").bind('submit', submitSong);
   $(".delete-song").bind('click', deleteSong);
-  // make this into a delete all button
-  // $("#clean-up").bind('click', cleanUpDoneTodos);
+  $(".delete-all-songs").bind('click', deleteAllSongs);
 });

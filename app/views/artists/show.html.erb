@@ -33,4 +33,5 @@
 
 <%= link_to "Update", edit_artist_path(@artist.id), class: "btn btn-default" %>
 <%= link_to "Delete", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
+<%= link_to "Delete all songs", artist_path(@artist.id), class: "btn btn-default delete-all-songs" %>
 <%= link_to "Back", artists_path, class: "btn btn-default" %>
