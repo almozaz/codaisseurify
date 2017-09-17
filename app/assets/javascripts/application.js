@@ -11,6 +11,7 @@ var parts = pathname.split("/");
 var artistId = parts[parts.length-1];
 
 function createSong(title) {
+
   $.ajax({
     type: "POST",
     url:  "/api/artists/" + artistId + "/songs.json",
@@ -21,22 +22,21 @@ function createSong(title) {
     dataType: "json"
   })
   .done(function(data) {
-  debugger;
   console.log(data)
-  var checkboxId = "song-" + data.id;
-
+  var deleteId = "song-" + data.song.id;
+  debugger;
   var listItem = $("<li></li>");
   listItem.addClass("song");
-  listItem.attr('song-id', data.id);
-
+  listItem.attr('song-id', data.song.id);
+  debugger;
   var deleteLink= $('<a></a>');
-  checkbox.attr('href', '#');
-  checkbox.attr('id', deleteId);
-  checkbox.val(1);
-  checkbox.bind('click', deleteSong);
-
+  deleteLink.attr('href', '#');
+  deleteLink.attr('id', deleteId);
+  deleteLink.attr('class', "delete-song");
+  deleteLink.bind('click', deleteSong);
+  debugger;
   var deleteIcon = $('<span></span>')
-  checkbox.attr('class', "glyphicon glyphicon-remove");
+  deleteIcon.attr('class', "glyphicon glyphicon-remove");
 
   var space = document.createTextNode(" ");
 
@@ -80,18 +80,25 @@ function submitSong(event) {
   $("#song_name").val(null);
 }
 
-function deleteSong(songId) {
+function deleteSong(event) {
+  event.preventDefault();
+  var listItem = $(this).parent().parent();
+  var songId = $(listItem).data('id');
   $.ajax({
     type: "DELETE",
-    url: "/songs/" + songId + ".json",
+    url: "/api/artists/" + artistId + "/songs/" + songId + ".json",
     contentType: "application/json",
-    dataType: "json"});
+    dataType: "json"})
+  .done(function(data) {
+    listItem.remove();
+  });
 }
 
 $(document).ready(function() {
   // change this into a delete song acction
-  $("deleteLink").bind('click', deleteSong);
+  // $("deleteLink").bind('click', deleteSong);
   $("form").bind('submit', submitSong);
+  $(".delete-song").bind('click', deleteSong);
   // make this into a delete all button
   // $("#clean-up").bind('click', cleanUpDoneTodos);
 });
