@@ -1,4 +1,5 @@
 Artist.destroy_all
+Song.destroy_all
 
 artist1 = Artist.create!( name: Faker::RockBand.name , description: Faker::Hipster.sentence(4) )
 artist2 = Artist.create!( name: Faker::RockBand.name , description: Faker::Hipster.sentence(4) )
