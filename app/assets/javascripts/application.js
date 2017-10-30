@@ -44,7 +44,7 @@ function createSong(title) {
   label.html(data.song.name);
 
   deleteLink.append(deleteIcon);
-  
+
   tableData.append(deleteLink);
   tableData.append(label);
 
